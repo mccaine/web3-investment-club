@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 import { CreateMember } from "../components/createMember";
 import Navbar from "../components/navbar";
 import { ProposalList } from "../components/proposalList";

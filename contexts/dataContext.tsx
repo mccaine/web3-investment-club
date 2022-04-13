@@ -87,21 +87,30 @@ export const useProviderData = () => {
     connect();
   }, []);
 
-  const connect = async () => {
-    if (window.ethereum) {
-      window.web3 = new Web3(window.ethereum);
-      window.ethereum.request({ method: "eth_requestAccounts" });
-      await window.ethereum.enable();
-    } else if (window.web3) {
-      window.web3 = new Web3(window.web3.currentProvider);
-    } else {
-      window.alert("Non-Eth browser detected. Please consider using MetaMask.");
-      return;
+  useEffect(() => {
+    if (account) {
+      loadBlockchainData()
     }
-    var allAccounts = await window.web3.eth.getAccounts();
-    console.log(allAccounts)
-    setAccount(allAccounts[0]);
-    await loadBlockchainData();
+  },[account])
+
+  const connect = async () => {
+    try {
+      if (window.ethereum) {
+        window.web3 = new Web3(window.ethereum);
+        window.ethereum.request({ method: "eth_requestAccounts" });
+        await window.ethereum.enable();
+      } else if (window.web3) {
+        window.web3 = new Web3(window.web3.currentProvider);
+      } else {
+        window.alert("Non-Eth browser detected. Please consider using MetaMask.");
+        return;
+      }
+      var allAccounts = await window.web3.eth.getAccounts();
+      console.log(allAccounts)
+      setAccount(allAccounts[0]);
+    } catch(err) {
+      console.log("ERROR", err)
+    }
   };
 
   const loadBlockchainData = async () => {
@@ -114,6 +123,7 @@ export const useProviderData = () => {
         dVcData.address,
       );
       setFundingDao(dVcContract);
+
       setTimeout(async () => {
        
         var totalProposals = await dVcContract.methods
@@ -129,6 +139,7 @@ export const useProviderData = () => {
           .call({
             from: account,
           });
+        console.log(`isStakeholder`, isStakeholder);
         setIsStakeholder(isStakeholder);
         var isMember = await dVcContract.methods.isMember().call({
           from: account,
@@ -164,7 +175,7 @@ export const useProviderData = () => {
           setCurrentBal("");
         }
         setLoading(false);
-      }, 500);
+      }, 1500);
     } else {
       window.alert("TestNet not found");
     }

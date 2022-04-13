@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useData } from "../contexts/dataContext";
+import {settings} from '../utils/settings'
 
 function Navbar() {
   const router = useRouter();
@@ -14,7 +15,7 @@ function Navbar() {
           <div className="">
             <Link href="/" passHref>
               <span className="font-semibold text-xl cursor-pointer">
-                BlueAbel VC
+                {settings.dAppName}
               </span>
             </Link>
             <span className="text-xs bg-blue-500 text-white rounded-lg py-1 px-1 font-bold ml-2">

@@ -4,6 +4,6 @@ interface Settings {
 }
 
 export const settings: Settings = {
-    dAppName: "BlueAbel VC",
+    dAppName: "MyFoundry VC",
     description: "Decentralized Venture Club"
 }

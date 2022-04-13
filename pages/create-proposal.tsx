@@ -1,9 +1,11 @@
-import Head from "next/head";
 import { FormEvent, useState } from "react";
+import Head from "../components/head";
 import Navbar from "../components/navbar";
 import { ProposalList } from "../components/proposalList";
 import { useData } from "../contexts/dataContext";
 import styles from "../styles/Home.module.css";
+
+import { settings } from "../utils/settings";
 
 export default function Home() {
   const [title, setTitle] = useState("");
@@ -44,11 +46,7 @@ export default function Home() {
   if (loading) return <div>Loading...</div>;
   return (
     <div className={styles.container}>
-      <Head>
-        <title>BlueAbel Venture Club</title>
-        <meta name="description" content="Decentralized Venture Club" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      <Head />
       <Navbar />
       {isMember && (
         <main className="w-full flex flex-col py-4 flex-grow max-w-5xl items-center">

@@ -1,8 +1,12 @@
+const path = require("path");
+require("dotenv").config({ path: path.resolve(__dirname, ".env.local") });
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const fs = require("fs");
 const mnemonicPhrase = fs.readFileSync(".secret").toString().trim();
 
 const TEST_NETWORK_PROVIDER = process.env.TEST_NETWORK_PROVIDER;
+
+console.log(TEST_NETWORK_PROVIDER);
 
 module.exports = {
   networks: {
@@ -11,7 +15,7 @@ module.exports = {
       port: 7545,
       network_id: "*",
     },
-    matic_mumbai: {
+    test_network: {
       provider: () =>
         new HDWalletProvider({
           mnemonic: mnemonicPhrase,

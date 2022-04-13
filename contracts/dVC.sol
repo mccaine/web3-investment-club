@@ -37,7 +37,7 @@ contract dVC is ReentrancyGuard, AccessControl {
     bytes32 public constant MEMBER = keccak256("MEMBER");
     bytes32 public constant STAKEHOLDER = keccak256("STAKEHOLDER");
 
-    uint32 constant votingPeriod = 3 minutes;
+    uint32 constant votingPeriod = 5 minutes;
     uint256 public proposalsCount = 0;
 
     event NewMember(address indexed fromAddress, uint256 amount);
@@ -66,8 +66,8 @@ contract dVC is ReentrancyGuard, AccessControl {
         string calldata imageId
     ) public payable onlyMember("Only members can create new proposal.") {
         require(
-            msg.value == 5 * 10**18,
-            "You need to add 5 MATIC to create a proposal"
+            msg.value == 0.05 * 10**18,
+            "You need to add 0.05 MATIC to create a proposal"
         );
         uint256 proposalId = proposalsCount;
         Proposal storage proposal = proposals[proposalId];
@@ -195,7 +195,7 @@ contract dVC is ReentrancyGuard, AccessControl {
         uint256 amount = msg.value;
         if (!hasRole(STAKEHOLDER, msg.sender)) {
             uint256 total = members[msg.sender] + amount;
-            if (total >= 2 ether) {
+            if (total >= 0.2 ether) {
                 _setupRole(STAKEHOLDER, msg.sender);
                 _setupRole(MEMBER, msg.sender);
                 stakeholders[msg.sender] = total;

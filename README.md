@@ -18,6 +18,12 @@ truffle compile
 truffle deploy
 ```
 
+## Run on testnet
+
+```
+truffle migrate --network test_network
+```
+
 ## Enviroment variables
 
 NEXT_PUBLIC_NETWORK_ID=<blockchain-network-id>

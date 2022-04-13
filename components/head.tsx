@@ -11,7 +11,7 @@ interface Props {
 const Head:React.FC<Props> = ({title = settings.dAppName, description = settings.description}) => {
     return (
         <NextHead>
-        <title>{title}</title>
+        <title>{`${title} | ${description}`}</title>
         <meta name="description" content={description} />
         <link rel="icon" href="/favicon.ico" />
       </NextHead>

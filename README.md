@@ -18,3 +18,6 @@ truffle compile
 truffle deploy
 ```
 
+## Enviroment variables
+
+NEXT_PUBLIC_NETWORK_ID=<blockchain-network-id>

@@ -105,8 +105,9 @@ export const useProviderData = () => {
   };
 
   const loadBlockchainData = async () => {
+    const networkId = process.env.NEXT_PUBLIC_NETWORK_ID;
     const web3 = window.web3;
-    const dVcData = DVC.networks["5777"];
+    const dVcData = DVC.networks[networkId];
     if (dVcData) {
       var dVcContract = await new web3.eth.Contract(
         DVC.abi,

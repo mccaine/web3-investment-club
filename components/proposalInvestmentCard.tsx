@@ -1,5 +1,3 @@
-import Img from "next/image";
-import Link from "next/link";
 import React from "react";
 import { useTimer } from "react-timer-hook";
 import Web3 from "web3";
@@ -98,7 +96,7 @@ export const ProposalInvestmentCard: React.FC<Props> = ({
                 await releaseFunding(proposal.id);
               }}
             >
-              Relese Funds
+              Release Funds
             </div>
           )}
         {proposal.isPaid && (

@@ -184,7 +184,7 @@ contract dVC is ReentrancyGuard, AccessControl {
         Proposal storage proposal = proposals[proposalId];
 
         if (proposal.totalFundRaised <= proposal.amount) {
-            revert("Required funds are not met. Please provider funds.");
+            revert("Required funds are not met. Please provide funds.");
         }
         proposal.receiverAddress.transfer(proposal.totalFundRaised);
         proposal.isPaid = true;

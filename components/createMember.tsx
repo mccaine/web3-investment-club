@@ -10,7 +10,7 @@ export const CreateMember = () => {
         <div className="flex flex-col justify-center">
           <span>You are not a member.</span>
           <p>
-            Add <strong>2 MATIC</strong> to become member and more than 2 MATIC
+            Add <strong>0.1 MATIC</strong> to become member and more than 0.2 MATIC
             become a stakeholder
           </p>
           <input

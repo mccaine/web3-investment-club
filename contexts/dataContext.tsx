@@ -1,10 +1,5 @@
 declare let window: any;
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Web3 from "web3";
 import DVC from "../abis/dVC.json";
@@ -72,7 +67,7 @@ export const DataProvider: React.FC = ({ children }) => {
 export const useData = () => useContext<DataContextProps>(DataContext);
 
 export const useProviderData = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [account, setAccount] = useState("");
   const [dVc, setFundingDao] = useState<any>();
   const [allProposals, setAllProposals] = useState<Proposal[]>([]);
@@ -80,22 +75,21 @@ export const useProviderData = () => {
   const [isMember, setIsMember] = useState(false);
   const [currentBal, setCurrentBal] = useState("");
   const [allVotes, setAllVotes] = useState<string[]>([]);
-  const [allInvestedProposal, setAllInvestedProposal] = useState<Proposal[]>(
-    []
-  );
+  const [allInvestedProposal, setAllInvestedProposal] = useState<Proposal[]>([]);
 
-  useEffect(() => {
-    connect();
-  }, []);
+  // useEffect(() => {
+  //   connect();
+  // }, []);
 
   useEffect(() => {
     if (account) {
-      loadBlockchainData()
+      loadBlockchainData();
     }
-  },[account])
+  }, [account]);
 
   const connect = async () => {
     try {
+      setLoading(true);
       if (window.ethereum) {
         window.web3 = new Web3(window.ethereum);
         window.ethereum.request({ method: "eth_requestAccounts" });
@@ -107,10 +101,12 @@ export const useProviderData = () => {
         return;
       }
       var allAccounts = await window.web3.eth.getAccounts();
-      console.log(allAccounts)
+      console.log(allAccounts);
       setAccount(allAccounts[0]);
-    } catch(err) {
-      console.log("ERROR", err)
+    } catch (err) {
+      console.log("ERROR", err);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -118,29 +114,21 @@ export const useProviderData = () => {
     const networkId = process.env.NEXT_PUBLIC_NETWORK_ID;
     const web3 = window.web3;
     // @ts-ignore
-    const dVcData= DVC.networks[networkId];
+    const dVcData = DVC.networks[networkId];
     if (dVcData) {
-      var dVcContract = await new web3.eth.Contract(
-        DVC.abi,
-        dVcData.address,
-      );
+      var dVcContract = await new web3.eth.Contract(DVC.abi, dVcData.address);
       setFundingDao(dVcContract);
 
       setTimeout(async () => {
-       
-        var totalProposals = await dVcContract.methods
-          .getAllProposals()
-          .call({ from: account });
+        var totalProposals = await dVcContract.methods.getAllProposals().call({ from: account });
         var tempProposals: Proposal[] = [];
         totalProposals.forEach((item: Proposal) => {
           tempProposals.push(item);
         });
         setAllProposals(tempProposals);
-        var isStakeholder = await dVcContract.methods
-          .isStakeholder()
-          .call({
-            from: account,
-          });
+        var isStakeholder = await dVcContract.methods.isStakeholder().call({
+          from: account,
+        });
         console.log(`isStakeholder`, isStakeholder);
         setIsStakeholder(isStakeholder);
         var isMember = await dVcContract.methods.isMember().call({
@@ -155,11 +143,9 @@ export const useProviderData = () => {
           });
           setCurrentBal(Web3.utils.fromWei(memberBal, "ether"));
         } else if (isMember && isStakeholder) {
-          var stakeholderBal = await dVcContract.methods
-            .getStakeholderBal()
-            .call({
-              from: account,
-            });
+          var stakeholderBal = await dVcContract.methods.getStakeholderBal().call({
+            from: account,
+          });
           setCurrentBal(Web3.utils.fromWei(stakeholderBal, "ether"));
           var votes = await dVcContract.methods.getVotes().call({
             from: account,
@@ -188,9 +174,7 @@ export const useProviderData = () => {
       toast.error("Please enter valid amount", {});
     }
     console.log(`dVc`, dVc);
-    await dVc.methods
-      .createStakeholder()
-      .send({ from: account, value: Web3.utils.toWei(amount, "ether") });
+    await dVc.methods.createStakeholder().send({ from: account, value: Web3.utils.toWei(amount, "ether") });
     loadBlockchainData();
   };
 
@@ -211,13 +195,7 @@ export const useProviderData = () => {
       toast.error("Please enter valid amount", {});
     }
     await dVc.methods
-      .createProposal(
-        title,
-        description,
-        recipient,
-        Web3.utils.toWei(amount, "ether"),
-        imageId
-      )
+      .createProposal(title, description, recipient, Web3.utils.toWei(amount, "ether"), imageId)
       .send({ from: account, value: Web3.utils.toWei(settings.proposeStake, "ether") });
     loadBlockchainData();
   };
@@ -238,12 +216,10 @@ export const useProviderData = () => {
   };
 
   const provideFunds = async (id: string, amount: string) => {
-    await dVc.methods
-      .provideFunds(id, Web3.utils.toWei(amount, "ether"))
-      .send({
-        from: account,
-        value: Web3.utils.toWei(amount, "ether"),
-      });
+    await dVc.methods.provideFunds(id, Web3.utils.toWei(amount, "ether")).send({
+      from: account,
+      value: Web3.utils.toWei(amount, "ether"),
+    });
     loadBlockchainData();
   };
 

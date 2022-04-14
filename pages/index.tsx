@@ -1,9 +1,12 @@
-import Head from "../components/head";
-import { CreateMember } from "../components/createMember";
-import Navbar from "../components/navbar";
-import { ProposalList } from "../components/proposalList";
+import styled from "styled-components";
+import Head from "@components/head";
+import { CreateMember } from "@components/createMember";
+import Navbar from "@components/navbar";
+import { ProposalList } from "@components/proposalList";
 import { useData } from "../contexts/dataContext";
-import styles from "../styles/Home.module.css";
+
+import HeroSection from "@components/herosection";
+import MainTemplate from "@templates/Main";
 
 export default function Home() {
   const { isMember, loading, account } = useData();
@@ -25,12 +28,10 @@ export default function Home() {
   //   );
   // }
   return (
-    <div className={styles.container}>
-      <Head title="Sheesh Venture Club"/>
-      <Navbar />
-
+    <MainTemplate>
+      <HeroSection />
       {!isMember && <CreateMember />}
       {isMember && <ProposalList />}
-    </div>
+    </MainTemplate>
   );
 }

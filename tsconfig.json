@@ -16,7 +16,9 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@icons/*": ["icons/*"] 
+      "@icons/*": ["icons/*"],
+      "@components/*": ["components/*"],
+      "@templates/*": ["templates/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

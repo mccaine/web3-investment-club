@@ -36,7 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           draggable
           pauseOnHover
         />
-        {/* Same as */}
         <ToastContainer />
         <DataProvider>
           {/* @ts-ignore */}

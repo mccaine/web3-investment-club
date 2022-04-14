@@ -1,43 +1,22 @@
+import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useCallback } from "react";
 import { useData } from "../contexts/dataContext";
 import { settings } from "../utils/settings";
-import Logo from "@icons/logo.svg";
+import Logo from "@components/logo";
+import Button from "@components/button";
 
 function Navbar() {
   const router = useRouter();
-  const { account, connect, isMember, isStakeholder } = useData();
+  const { account, connect, isMember, isStakeholder, loading } = useData();
 
-  return (
-    <>
-      <nav className="w-full h-16 mt-auto max-w-6xl">
-        <div className="flex flex-row justify-between items-center h-full">
-          <div className="flex flex-row">
-            <Link href="/" passHref>
-              <Logo />
-            </Link>
-            <span className="text-xs bg-blue-500 text-white rounded-lg py-1 px-1 font-bold ml-2">
-              {!isMember && !isStakeholder ? "Not a Member" : isStakeholder ? "Stakeholder" : "Member"}
-            </span>
-          </div>
+  const handleConnect = useCallback(async () => {
+    await connect();
+  }, [connect]);
 
-          {account ? (
-            <div className="bg-green-500 px-6 py-2 rounded-md cursor-pointer">
-              <span className="text-lg text-white">{account.substr(0, 10)}...</span>
-            </div>
-          ) : (
-            <div
-              className="bg-green-500 px-6 py-2 rounded-md cursor-pointer"
-              onClick={() => {
-                connect();
-              }}
-            >
-              <span className="text-lg text-white">Connect</span>
-            </div>
-          )}
-        </div>
-      </nav>
+  const TabNav = () => {
+    return (
       <nav className="w-full h-16 m-auto max-w-5xl flex justify-center">
         <div className="flex flex-row justify-between items-center h-full">
           {account && (
@@ -64,6 +43,30 @@ function Navbar() {
           )}
         </div>
       </nav>
+    );
+  };
+
+  return (
+    <>
+      <nav className="w-full h-16 mt-auto max-w-6xl">
+        <div className="flex flex-row justify-between items-center h-full">
+          <div className="flex flex-row">
+            <Link href="/" passHref>
+              <Logo />
+            </Link>
+            {/* <span className="text-xs bg-blue-500 text-white rounded-lg py-1 px-1 font-bold ml-2">
+              {!isMember && !isStakeholder ? "Not a Member" : isStakeholder ? "Stakeholder" : "Member"}
+            </span> */}
+          </div>
+
+          {account ? (
+            <Button onClick={() => {}} title={account.substr(0, 10)} />
+          ) : (
+            <Button onClick={handleConnect} title={loading ? "loading..." : "connect"} />
+          )}
+        </div>
+      </nav>
+      {account && <TabNav />}
     </>
   );
 }

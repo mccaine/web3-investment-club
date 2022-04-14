@@ -8,6 +8,7 @@ import {
 import { toast } from "react-toastify";
 import Web3 from "web3";
 import DVC from "../abis/dVC.json";
+import { settings } from "../utils/settings";
 import { Proposal } from "../utils/interface";
 
 interface DataContextProps {
@@ -217,7 +218,7 @@ export const useProviderData = () => {
         Web3.utils.toWei(amount, "ether"),
         imageId
       )
-      .send({ from: account, value: Web3.utils.toWei("5", "ether") });
+      .send({ from: account, value: Web3.utils.toWei(settings.proposeStake, "ether") });
     loadBlockchainData();
   };
 

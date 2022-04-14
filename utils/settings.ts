@@ -5,5 +5,5 @@ interface Settings {
 
 export const settings: Settings = {
     dAppName: "MyFoundry VC",
-    description: "Decentralized Venture Club"
+    description: "Venture Club"
 }

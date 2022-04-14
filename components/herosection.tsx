@@ -9,7 +9,7 @@ const HeroSection = () => {
           <TitleWrapper>
             <Title>Invest</Title>
             <br />
-            <Title>as a VC</Title>
+            <Title>like a VC</Title>
           </TitleWrapper>
           <SubTitleWrapper>
             <SubTitle>Stake, vote and invest with friends!</SubTitle>

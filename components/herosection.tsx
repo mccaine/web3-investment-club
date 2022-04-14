@@ -11,6 +11,9 @@ const HeroSection = () => {
             <br />
             <Title>as a VC</Title>
           </TitleWrapper>
+          <SubTitleWrapper>
+            <SubTitle>Stake, vote and invest with friends!</SubTitle>
+          </SubTitleWrapper>
         </Box>
         <Box>
           <ImageOuter>
@@ -71,6 +74,14 @@ const ImageOuter = styled.div`
   padding-right: 12px;
   display: flex;
   flex: 1;
+`;
+
+const SubTitleWrapper = styled.div`
+  margin-top: 24px;
+`;
+
+const SubTitle = styled.p`
+  font-size: 2rem;
 `;
 
 export default HeroSection;

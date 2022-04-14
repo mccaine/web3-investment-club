@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { css } from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
@@ -6,6 +6,7 @@ import { useData } from "../contexts/dataContext";
 import { settings } from "../utils/settings";
 import Logo from "@components/logo";
 import Button from "@components/button";
+import Box from "@components/box";
 
 function Navbar() {
   const router = useRouter();
@@ -48,15 +49,29 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-full h-16 mt-auto max-w-6xl">
-        <div className="flex flex-row justify-between items-center h-full">
+      <Box
+        as="nav"
+        px={4}
+        py={1}
+        sx={css`
+          min-height: 64px;
+          display: flex;
+          width: 100%;
+          align-items: center;
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        `}
+      >
+        <Box
+          sx={css`
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+          `}
+        >
           <div className="flex flex-row">
             <Link href="/" passHref>
               <Logo />
             </Link>
-            {/* <span className="text-xs bg-blue-500 text-white rounded-lg py-1 px-1 font-bold ml-2">
-              {!isMember && !isStakeholder ? "Not a Member" : isStakeholder ? "Stakeholder" : "Member"}
-            </span> */}
           </div>
 
           {account ? (
@@ -64,8 +79,8 @@ function Navbar() {
           ) : (
             <Button onClick={handleConnect} title={loading ? "loading..." : "connect"} />
           )}
-        </div>
-      </nav>
+        </Box>
+      </Box>
       {account && <TabNav />}
     </>
   );

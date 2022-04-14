@@ -1,17 +1,20 @@
+import { FC } from "react";
 import styled from "styled-components";
-import Link from "next/link";
 
 import LogoDefault from "@icons/logo.svg";
+import { paddingCSS, marginCSS, Margin, Padding } from "./css";
 
-const Logo = () => {
+const Logo: FC<Margin & Padding> = (props) => {
   return (
-    <Container>
+    <Container {...props}>
       <LogoDefault />
     </Container>
   );
 };
 
 const Container = styled.div`
+  ${marginCSS};
+  ${paddingCSS};
   display: flex;
   justify-content: center;
   align-items: center;

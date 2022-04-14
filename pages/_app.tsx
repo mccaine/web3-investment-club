@@ -5,6 +5,7 @@ import { DataProvider } from "../contexts/dataContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
+import { lightTheme } from "../theme";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -14,16 +15,10 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const theme = {
-  colors: {
-    primary: "#0070f3",
-  },
-};
-
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={lightTheme}>
         {/* <GlobalStyle /> */}
         <ToastContainer
           position="top-right"

@@ -1,8 +1,9 @@
+import { FC } from "react";
 import styled from "styled-components";
 import Head from "@components/head";
 import Navbar from "@components/navbar";
 
-const MainTemplate = ({ children }) => {
+const MainTemplate: FC = ({ children }) => {
   return (
     <Main>
       <Head />

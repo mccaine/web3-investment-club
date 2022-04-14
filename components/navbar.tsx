@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { useData } from "../contexts/dataContext";
@@ -14,7 +13,7 @@ function Navbar() {
     <>
       <nav className="w-full h-16 mt-auto max-w-6xl">
         <div className="flex flex-row justify-between items-center h-full">
-          <div className="">
+          <div className="flex flex-row">
             <Link href="/" passHref>
               <Logo />
             </Link>

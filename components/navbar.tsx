@@ -1,8 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { useData } from "../contexts/dataContext";
-import {settings} from '../utils/settings'
+import { settings } from "../utils/settings";
+import Logo from "@icons/logo.svg";
 
 function Navbar() {
   const router = useRouter();
@@ -10,28 +12,20 @@ function Navbar() {
 
   return (
     <>
-      <nav className="w-full h-16 mt-auto max-w-5xl">
+      <nav className="w-full h-16 mt-auto max-w-6xl">
         <div className="flex flex-row justify-between items-center h-full">
           <div className="">
             <Link href="/" passHref>
-              <span className="font-semibold text-xl cursor-pointer">
-                {settings.dAppName}
-              </span>
+              <Logo />
             </Link>
             <span className="text-xs bg-blue-500 text-white rounded-lg py-1 px-1 font-bold ml-2">
-              {!isMember && !isStakeholder
-                ? "Not a Member"
-                : isStakeholder
-                ? "Stakeholder"
-                : "Member"}
+              {!isMember && !isStakeholder ? "Not a Member" : isStakeholder ? "Stakeholder" : "Member"}
             </span>
           </div>
 
           {account ? (
             <div className="bg-green-500 px-6 py-2 rounded-md cursor-pointer">
-              <span className="text-lg text-white">
-                {account.substr(0, 10)}...
-              </span>
+              <span className="text-lg text-white">{account.substr(0, 10)}...</span>
             </div>
           ) : (
             <div
@@ -49,11 +43,7 @@ function Navbar() {
         <div className="flex flex-row justify-between items-center h-full">
           {account && (
             <div className="flex flex-row items-center justify-center h-full">
-              <TabButton
-                title="Home"
-                isActive={router.asPath === "/"}
-                url={"/"}
-              />
+              <TabButton title="Home" isActive={router.asPath === "/"} url={"/"} />
               {isMember && (
                 <TabButton
                   title="Create Proposal"
@@ -69,11 +59,7 @@ function Navbar() {
                 />
               )}
               {isStakeholder && (
-                <TabButton
-                  title="Investments"
-                  isActive={router.asPath === "/investments"}
-                  url={"/investments"}
-                />
+                <TabButton title="Investments" isActive={router.asPath === "/investments"} url={"/investments"} />
               )}
             </div>
           )}
@@ -85,22 +71,12 @@ function Navbar() {
 
 export default Navbar;
 
-const TabButton = ({
-  title,
-  isActive,
-  url,
-}: {
-  title: string;
-  isActive: boolean;
-  url: string;
-}) => {
+const TabButton = ({ title, isActive, url }: { title: string; isActive: boolean; url: string }) => {
   return (
     <Link href={url} passHref>
       <div
         className={`h-full px-3 flex items-center border-b-2 font-semibold hover:border-blue-700 hover:text-blue-700 cursor-pointer ${
-          isActive
-            ? "border-blue-700 text-blue-700 text-base font-semibold"
-            : "border-white text-gray-400 text-base"
+          isActive ? "border-blue-700 text-blue-700 text-base font-semibold" : "border-white text-gray-400 text-base"
         }`}
       >
         <span>{title}</span>

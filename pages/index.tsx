@@ -81,7 +81,7 @@ export default function Home() {
           </Box>
           it...
           <br />
-          you&apos;re the boss
+          homieee
         </Heading>
       </Box>
     </Box>

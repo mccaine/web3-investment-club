@@ -9,6 +9,7 @@ const sharedStyles = {
   mixins: {
     activeOpacity: 0.72,
   },
+  hoverFix: '@media (hover: hover)',
 };
 
 export default sharedStyles;

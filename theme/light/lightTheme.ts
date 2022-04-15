@@ -23,22 +23,12 @@ type Background = {
     activeOpacity: number;
   };
 
-  type DistanceTypes = {
-    mt?: number;
-    mx?: number;
-    my?: number;
-    pb?: number;
-  pt?: number;
-  px?: number;
-  py?: number;
-  }
-  
   declare module 'styled-components' {
     export interface DefaultTheme {
       palette: Palette;
       mixins: Mixins;
       spacing(params: number): number;
-      mt?: number;
+      hoverFix: string;
     }
   }
   

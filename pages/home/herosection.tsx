@@ -60,7 +60,7 @@ const Inner = styled.div`
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
   @media ${device.sm} {
     flex-direction: row;
@@ -96,7 +96,11 @@ const ImageOuter = styled.div`
   padding-left: 12px;
   padding-right: 12px;
   display: flex;
+  justify-content: flex-start;
   flex: 1;
+  @media ${device.sm} {
+    justify-content: center;
+  }
 `;
 
 const SubTitleWrapper = styled.div`

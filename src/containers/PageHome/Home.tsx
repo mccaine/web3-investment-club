@@ -1,5 +1,5 @@
 import { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 import MainTemplate from "@templates/Main";
 
@@ -12,7 +12,6 @@ import SectionVideo from "./SectionVideo";
 
 export default function Home() {
   const { isMember, loading, account } = useData();
-  const [muted, setMuted] = useState(true);
 
   // if (loading) {
   //   return (
@@ -40,12 +39,3 @@ export default function Home() {
     </MainTemplate>
   );
 }
-
-const Heading = styled.h1`
-  font-size: 44px;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: -0.05rem;
-  padding: 0;
-  border: 0;
-`;

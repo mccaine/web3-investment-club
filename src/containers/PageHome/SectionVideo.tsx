@@ -3,53 +3,117 @@ import styled, { css } from "styled-components";
 import Box from "@components/box";
 import Video from "@components/Video";
 import { Title } from "@components/typography";
+import { device } from "@theme/index";
+
+import { Section } from "@components/layout";
 
 const SectionVideo = () => (
-  <Box
-    as="section"
+  <Section
     sx={css`
       background-color: #f8db47;
       min-height: 300px;
-      width: 100%;
-      position: relative;
-      display: flex;
-      align-items: center;
     `}
   >
     <Box
-      my={8}
-      ml={6}
       sx={css`
-        border: 12px #cb78f8 solid;
-        border-radius: 12px;
-        width: 55%;
+        width: 100%;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-wrap: wrap;
+        max-width: 1600px;
+        margin: 0 auto;
+        padding-top: ${({ theme }) => theme.spacing(4)}px;
+        padding-bottom: ${({ theme }) => theme.spacing(4)}px;
+        @media ${device.sm} {
+          flex-direction: row;
+          align-items: center;
+          padding-top: ${({ theme }) => theme.spacing(13)}px;
+          padding-bottom: ${({ theme }) => theme.spacing(13)}px;
+        }
       `}
     >
-      <Video muted={false} playing={true} loop={true} url="/sheesh-meme-1080.mp4" controls={true} light="/poster.png" />
-    </Box>
-    <Box ml={8}>
-      <Title>
+      <Box
+        sx={css`
+          flex-basis: 100%;
+          max-width: 100%;
+          flex-grow: 0;
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          margin: 0;
+          flex-direction: column;
+          @media ${device.sm} {
+            flex-basis: 55%;
+            max-width: 55%;
+          }
+          @media ${device.md} {
+            flex-basis: 55%;
+            max-width: 55%;
+          }
+        `}
+      >
         <Box
-          as="span"
-          mr={3}
           sx={css`
-            font-weight: 500;
-            letter-spacing: -0.05rem;
-            display: inline-block;
-            /* margin: 0 0.32000000000000006rem; */
-            padding: 0 0.96rem;
-            background-color: #f46c47;
-            transform: rotate(-5.5deg);
+            border: 12px #cb78f8 solid;
+            border-radius: 12px;
+            width: 100%;
           `}
         >
-          Sheesh
+          <Video
+            muted={false}
+            playing={true}
+            loop={true}
+            url="/sheesh-meme-1080.mp4"
+            controls={true}
+            light="/poster.png"
+          />
         </Box>
-        it...
-        <br />
-        you&apos;re the boss
-      </Title>
+      </Box>
+      <Box
+        sx={css`
+          flex-basis: 100%;
+          max-width: 100%;
+          flex-grow: 0;
+          display: flex;
+          flex-wrap: wrap;
+          width: 100%;
+          margin: 0;
+          flex-direction: column;
+          padding: ${({ theme }) => theme.spacing(6)}px 0;
+          @media ${device.sm} {
+            flex-basis: 45%;
+            max-width: 45%;
+          }
+          @media ${device.md} {
+            flex-basis: 45%;
+            max-width: 45%;
+          }
+        `}
+        // ml={8}
+      >
+        <Title>
+          <Box
+            as="span"
+            mr={3}
+            sx={css`
+              font-weight: 500;
+              letter-spacing: -0.05rem;
+              display: inline-block;
+              margin-left: -6px;
+              padding: 0 0.96rem;
+              background-color: #f46c47;
+              transform: rotate(-5.5deg);
+            `}
+          >
+            Sheesh
+          </Box>
+          it...
+          <br />
+          you&apos;re the boss
+        </Title>
+      </Box>
     </Box>
-  </Box>
+  </Section>
 );
 
 export default SectionVideo;

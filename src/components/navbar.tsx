@@ -22,7 +22,7 @@ function Navbar() {
         <div className="flex flex-row justify-between items-center h-full">
           {account && (
             <div className="flex flex-row items-center justify-center h-full">
-              <TabButton title="Home" isActive={router.asPath === "/"} url={"/"} />
+              <TabButton title="Proposals" isActive={router.asPath === "/proposals"} url={"/proposals"} />
               {isMember && (
                 <TabButton
                   title="Create Proposal"
@@ -54,6 +54,7 @@ function Navbar() {
         px={4}
         py={1}
         sx={css`
+          max-width: 1600px;
           min-height: 64px;
           display: flex;
           width: 100%;
@@ -81,7 +82,7 @@ function Navbar() {
           )}
         </Box>
       </Box>
-      {account && <TabNav />}
+      {isMember && <TabNav />}
     </>
   );
 }

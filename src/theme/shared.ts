@@ -42,6 +42,8 @@ const sharedStyles = {
   spacing,
   mixins: {
     activeOpacity: 0.72,
+    maxNavWidth: "1600px",
+    maxPageWidth: "1600px",
   },
   hoverFix: '@media (hover: hover)',
   bp: {

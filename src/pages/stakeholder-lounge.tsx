@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Head from "../components/head";
-import Navbar from "../components/navbar";
+import MainTemplate from "@templates/Main";
 import { useData } from "../contexts/dataContext";
 import styles from "../styles/Home.module.css";
 
@@ -18,47 +17,42 @@ export default function Home() {
   if (!account) {
     return (
       <div className="h-screen w-screen flex justify-center items-center">
-        <div className="text-2xl font-bold text-gray-500">
-          Please connect Metamask Wallet
-        </div>
+        <div className="text-2xl font-bold text-gray-500">Please connect Metamask Wallet</div>
       </div>
     );
   }
   return (
-    <div className={styles.container}>
-      <Head />
-      <Navbar />
-      <main className="w-screen flex py-4 flex-grow justify-center">
-        <div className="w-1/3 border-2 border-blue-600 rounded-xl p-3 mt-10 h-full">
-          <div className="flex flex-col justify-center">
-            <p className="my-2">
-              Current Balance :{" "}
-              <span className="text-lg font-bold text-blue-600">
-                {currentBal} MATIC
-              </span>
-            </p>
-            <input
-              type="search"
-              name="q"
-              value={val}
-              onChange={(e) => setVal(e.target.value)}
-              className="my-5 w-full py-3 px-3 text-base text-gray-700 bg-gray-100 rounded-md focus:outline-none"
-              placeholder="Amount in MATIC"
-              autoComplete="off"
-            />
-            <button
-              className="px-3 py-2 rounded-xl bg-blue-600 text-white"
-              onClick={() => {
-                createStakeholder(val).then(() => {
-                  setVal("");
-                });
-              }}
-            >
-              Send
-            </button>
+    <MainTemplate>
+      <div className={styles.container}>
+        <main className="w-screen flex py-4 flex-grow justify-center">
+          <div className="w-1/3 border-2 border-blue-600 rounded-xl p-3 mt-10 h-full">
+            <div className="flex flex-col justify-center">
+              <p className="my-2">
+                Current Balance : <span className="text-lg font-bold text-blue-600">{currentBal} MATIC</span>
+              </p>
+              <input
+                type="search"
+                name="q"
+                value={val}
+                onChange={(e) => setVal(e.target.value)}
+                className="my-5 w-full py-3 px-3 text-base text-gray-700 bg-gray-100 rounded-md focus:outline-none"
+                placeholder="Amount in MATIC"
+                autoComplete="off"
+              />
+              <button
+                className="px-3 py-2 rounded-xl bg-blue-600 text-white"
+                onClick={() => {
+                  createStakeholder(val).then(() => {
+                    setVal("");
+                  });
+                }}
+              >
+                Send
+              </button>
+            </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </MainTemplate>
   );
 }

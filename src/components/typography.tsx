@@ -8,9 +8,9 @@ type Props = {
 };
 
 const titleSmall = css`
-  font-size: 24px;
+  font-size: 18px;
   @media ${device.md} {
-    font-size: 36px;
+    font-size: 20px;
   }
 `;
 

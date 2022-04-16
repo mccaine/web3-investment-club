@@ -10,7 +10,7 @@ import { Section } from "@components/layout";
 const SectionVideo = () => (
   <Section
     sx={css`
-      background-color: #f8db47;
+      background-color: ${({ theme }) => theme.palette.color.yellowBright};
       min-height: 300px;
     `}
   >

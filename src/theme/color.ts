@@ -9,6 +9,7 @@ export type ColorTypes = {
     redMat: string;
     redDark: string;
     purplePure: string;
+    brownPure: string;
 }
 
 export const color:ColorTypes = {
@@ -19,7 +20,8 @@ export const color:ColorTypes = {
     yellowBright: "#F7DB47",
     yellowDust: "#FEF7F6",
     yellowPure: "#8D9986",
-    redMat: "#F7DB47",
+    redMat: "#F46D48",
     redDark: "#9E2F50",
     purplePure: "#CB78F5",
+    brownPure: "#7B3E27",
 }

@@ -23,6 +23,8 @@ type Background = {
   
   type Mixins = {
     activeOpacity: number;
+    maxNavWidth: string;
+    maxPageWidth: string;
   };
 
   type BreakPoints = {

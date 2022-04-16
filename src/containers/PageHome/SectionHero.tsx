@@ -11,7 +11,7 @@ const titleBgCSS = css`
   }
 `;
 
-const HeroSection = () => {
+const SectionHero = () => {
   return (
     <Section>
       <Inner>
@@ -120,4 +120,4 @@ const Image = styled.img`
   }
 `;
 
-export default HeroSection;
+export default SectionHero;

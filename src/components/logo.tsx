@@ -2,7 +2,7 @@ import { FC } from "react";
 import styled from "styled-components";
 
 import LogoDefault from "@icons/logo.svg";
-import { paddingCSS, marginCSS, Margin, Padding } from "./css";
+import { paddingCSS, marginCSS, Margin, Padding } from "@components/css";
 
 const Logo: FC<Margin & Padding> = (props) => {
   return (

@@ -1,6 +1,6 @@
-import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import { useData } from "../contexts/dataContext";
+import { Dialog, Transition } from "@headlessui/react";
+import { useData } from "@contexts/dataContext";
 
 interface Props {
   isOpen: boolean;
@@ -10,23 +10,13 @@ interface Props {
   fundingRaised: string;
 }
 
-export const AddFundsModal: React.FC<Props> = ({
-  isOpen,
-  closeModal,
-  id,
-  fundingRequired,
-  fundingRaised,
-}) => {
+export const AddFundsModal: React.FC<Props> = ({ isOpen, closeModal, id, fundingRequired, fundingRaised }) => {
   const { provideFunds } = useData();
   const [amount, setAmount] = useState("");
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
-        >
+        <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={closeModal}>
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -39,10 +29,7 @@ export const AddFundsModal: React.FC<Props> = ({
             >
               <Dialog.Overlay className="fixed inset-0" />
             </Transition.Child>
-            <span
-              className="inline-block h-screen align-middle"
-              aria-hidden="true"
-            >
+            <span className="inline-block h-screen align-middle" aria-hidden="true">
               &#8203;
             </span>
             <Transition.Child
@@ -56,22 +43,13 @@ export const AddFundsModal: React.FC<Props> = ({
             >
               <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl border-4">
                 <div className="mt-2 flex flex-row justify-between">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                     Add Funds
                   </Dialog.Title>
                 </div>
-                <span className="my-2">
-                  How much would you like to invest in this project?
-                </span>
+                <span className="my-2">How much would you like to invest in this project?</span>
                 <p className="mt-1">
-                  Required Funding :{" "}
-                  <strong>
-                    {parseInt(fundingRequired) < 0 ? "-" : fundingRequired}{" "}
-                    MATIC
-                  </strong>
+                  Required Funding : <strong>{parseInt(fundingRequired) < 0 ? "-" : fundingRequired} MATIC</strong>
                 </p>
                 <p className="mt-1">
                   Funding Raised : <strong>{fundingRaised} MATIC</strong>

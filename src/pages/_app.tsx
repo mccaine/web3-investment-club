@@ -1,11 +1,11 @@
 import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
 import type { AppProps } from "next/app";
-import { DataProvider } from "../contexts/dataContext";
+import { DataProvider } from "@contexts/dataContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { lightTheme } from "../theme";
+import { lightTheme } from "@theme/index";
 
 const GlobalStyle = createGlobalStyle`
   body {

@@ -1,26 +1,22 @@
 import React from "react";
 import { useTimer } from "react-timer-hook";
 import Web3 from "web3";
-import { useData } from "../contexts/dataContext";
-import { Proposal } from "../utils/interface";
-import { AddFundsModal } from "./addFundModal";
+import { useData } from "@contexts/dataContext";
+import { Proposal } from "@utils/interface";
+import { AddFundsModal } from "@components/addFundModal";
 
 interface Props {
   proposal: Proposal;
   openModal: () => void;
 }
-export const ProposalInvestmentCard: React.FC<Props> = ({
-  proposal,
-  openModal,
-}) => {
+export const ProposalInvestmentCard: React.FC<Props> = ({ proposal, openModal }) => {
   const { seconds, minutes, hours, days } = useTimer({
     expiryTimestamp: new Date(parseInt(proposal.livePeriod) * 1000),
     onExpire: () => console.warn("onExpire called"),
   });
   const { isStakeholder, getProposal, releaseFunding } = useData();
   const [isOpen, setIsOpen] = React.useState(false);
-  const isCompleted =
-    new Date(parseInt(proposal.livePeriod) * 1000) < new Date();
+  const isCompleted = new Date(parseInt(proposal.livePeriod) * 1000) < new Date();
   console.log(`proposal.isPaid`, proposal.isPaid);
 
   return (
@@ -42,9 +38,7 @@ export const ProposalInvestmentCard: React.FC<Props> = ({
           setIsOpen(false);
         }}
         fundingRequired={Web3.utils.fromWei(
-          (
-            parseInt(proposal.amount) - parseInt(proposal.totalFundRaised)
-          ).toString()
+          (parseInt(proposal.amount) - parseInt(proposal.totalFundRaised)).toString()
         )}
         fundingRaised={Web3.utils.fromWei(proposal.totalFundRaised)}
       />
@@ -59,22 +53,14 @@ export const ProposalInvestmentCard: React.FC<Props> = ({
               Voting Period
             </span>
           </span>
-          <span className="text-sm line-clamp-3 mt-4 mb-6">
-            {proposal.desc}
-          </span>
+          <span className="text-sm line-clamp-3 mt-4 mb-6">{proposal.desc}</span>
           <span className="text-sm">
-            Proposer:{" "}
-            <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">
-              {proposal.proposer}
-            </span>
+            Proposer: <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">{proposal.proposer}</span>
           </span>
         </div>
         <span className="my-3 font-bold">
-          {isCompleted &&
-          parseInt(proposal.voteInFavor) > parseInt(proposal.voteAgainst)
-            ? `Total Funding Received - ${Web3.utils.fromWei(
-                proposal.totalFundRaised
-              )} MATIC`
+          {isCompleted && parseInt(proposal.voteInFavor) > parseInt(proposal.voteAgainst)
+            ? `Total Funding Received - ${Web3.utils.fromWei(proposal.totalFundRaised)} MATIC`
             : ""}
         </span>
         {!proposal.isPaid && isCompleted && (
@@ -87,18 +73,16 @@ export const ProposalInvestmentCard: React.FC<Props> = ({
             Add Funds
           </div>
         )}
-        {!proposal.isPaid &&
-          isCompleted &&
-          parseInt(proposal.totalFundRaised) >= parseInt(proposal.amount) && (
-            <div
-              className="px-3 py-2 bg-green-600 text-white font-bold text-center rounded-xl mt-3"
-              onClick={async () => {
-                await releaseFunding(proposal.id);
-              }}
-            >
-              Release Funds
-            </div>
-          )}
+        {!proposal.isPaid && isCompleted && parseInt(proposal.totalFundRaised) >= parseInt(proposal.amount) && (
+          <div
+            className="px-3 py-2 bg-green-600 text-white font-bold text-center rounded-xl mt-3"
+            onClick={async () => {
+              await releaseFunding(proposal.id);
+            }}
+          >
+            Release Funds
+          </div>
+        )}
         {proposal.isPaid && (
           <span className="text-center font-bold border-2 px-3 py-1 rounded-xl border-blue-600">
             Funds are released to Proposer.
@@ -109,8 +93,7 @@ export const ProposalInvestmentCard: React.FC<Props> = ({
             <div className="flex flex-col space-y-1">
               <span className="text-xs text-gray-500 font-bold">Time</span>
               <span className="text-sm">
-                <span>{days} days</span> <span>{hours}</span>:
-                <span>{minutes}</span>:<span>{seconds}</span>
+                <span>{days} days</span> <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
                 {/* <span>{ampm}</span> */}
               </span>
             </div>

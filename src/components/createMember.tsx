@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useData } from "../contexts/dataContext";
+import { useData } from "@contexts/dataContext";
 
 export const CreateMember = () => {
   const { createStakeholder } = useData();

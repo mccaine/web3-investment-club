@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { marginCSS, paddingCSS, Margin, Padding } from "./css";
+import { marginCSS, paddingCSS, Margin, Padding } from "@components/css";
 
 type Sx = {
   sx?: any;

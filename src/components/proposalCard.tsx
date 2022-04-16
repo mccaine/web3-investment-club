@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import { useTimer } from "react-timer-hook";
 import Web3 from "web3";
-import { useData } from "../contexts/dataContext";
-import { Proposal } from "../utils/interface";
+import { useData } from "@contexts/dataContext";
+import { Proposal } from "@utils/interface";
 
 interface Props {
   proposal: Proposal;
@@ -16,8 +16,7 @@ export const ProposalCard: React.FC<Props> = ({ proposal, openModal }) => {
     onExpire: () => console.warn("onExpire called"),
   });
   const { isStakeholder, getProposal } = useData();
-  const isCompleted =
-    new Date(parseInt(proposal.livePeriod) * 1000) < new Date();
+  const isCompleted = new Date(parseInt(proposal.livePeriod) * 1000) < new Date();
   console.log(`isCompleted`, isCompleted);
   return (
     <div
@@ -36,10 +35,7 @@ export const ProposalCard: React.FC<Props> = ({ proposal, openModal }) => {
           <span className="text-sm font-bold text-gray-500 inline-flex justify-between ">
             Proposal - #{parseInt(proposal.id) + 1}
             <span>
-              Funding Amount -{" "}
-              <span className="text-blue-600">
-                {Web3.utils.fromWei(proposal.amount)} MATIC
-              </span>
+              Funding Amount - <span className="text-blue-600">{Web3.utils.fromWei(proposal.amount)} MATIC</span>
             </span>
           </span>
           <span className="text-lg font-bold inline-flex justify-between mt-2">
@@ -48,14 +44,9 @@ export const ProposalCard: React.FC<Props> = ({ proposal, openModal }) => {
               Voting Period
             </span>
           </span>
-          <span className="text-sm line-clamp-3 mt-4 mb-6">
-            {proposal.desc}
-          </span>
+          <span className="text-sm line-clamp-3 mt-4 mb-6">{proposal.desc}</span>
           <span className="text-sm">
-            Proposer:{" "}
-            <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">
-              {proposal.proposer}
-            </span>
+            Proposer: <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">{proposal.proposer}</span>
           </span>
         </div>
 
@@ -66,25 +57,19 @@ export const ProposalCard: React.FC<Props> = ({ proposal, openModal }) => {
               <span className="text-xs font-bold">Voting period is over.</span>
             ) : (
               <span className="text-sm">
-                <span>{days} days</span> <span>{hours}</span>:
-                <span>{minutes}</span>:<span>{seconds}</span>
+                <span>{days} days</span> <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
                 {/* <span>{ampm}</span> */}
               </span>
             )}
           </div>
           {isCompleted ? (
             <span className="text-base font-bold">
-              Proposal is{" "}
-              {parseInt(proposal.voteInFavor) > parseInt(proposal.voteAgainst)
-                ? "Accepted"
-                : "Rejected"}
+              Proposal is {parseInt(proposal.voteInFavor) > parseInt(proposal.voteAgainst) ? "Accepted" : "Rejected"}
             </span>
           ) : (
             <>
               <div className="flex flex-col space-y-1">
-                <span className="text-xs text-gray-500 font-bold">
-                  In Favor
-                </span>
+                <span className="text-xs text-gray-500 font-bold">In Favor</span>
                 <span className="text-sm">{proposal.voteInFavor}</span>
               </div>
               <div className="flex flex-col space-y-1">

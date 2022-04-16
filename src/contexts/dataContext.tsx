@@ -2,9 +2,9 @@ declare let window: any;
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import Web3 from "web3";
-import DVC from "../abis/dVC.json";
-import { settings } from "../utils/settings";
-import { Proposal } from "../utils/interface";
+import DVC from "../../abis/dVC.json";
+import { settings } from "@utils/settings";
+import { Proposal } from "@utils/interface";
 
 interface DataContextProps {
   account: string;

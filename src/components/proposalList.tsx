@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import { useData } from "../contexts/dataContext";
-import { ProposalCard } from "./proposalCard";
-import { VoteModal } from "./voteModal";
-import { Proposal } from "../utils/interface";
+import { useData } from "@contexts/dataContext";
+import { ProposalCard } from "@components/proposalCard";
+import { VoteModal } from "@components/voteModal";
+import { Proposal } from "@utils/interface";
 
 export const ProposalList = () => {
   const { allProposals, isMember, isStakeholder } = useData();
@@ -18,9 +18,7 @@ export const ProposalList = () => {
           setIsOpen(false);
         }}
       />
-      <span className="text-lg font-bold mt-5">
-        {isMember && !isStakeholder ? "My Proposal" : "All Proposals"}
-      </span>
+      <span className="text-lg font-bold mt-5">{isMember && !isStakeholder ? "My Proposal" : "All Proposals"}</span>
       <main className="w-full flex flex-row py-4 flex-grow max-w-5xl">
         {allProposals.length == 0 && (
           <span className="text-lg font-bold mt-5 text-center">

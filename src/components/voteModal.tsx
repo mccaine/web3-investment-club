@@ -2,8 +2,8 @@ import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useEffect, useState } from "react";
 import Web3 from "web3";
 import Img from "next/image";
-import { useData } from "../contexts/dataContext";
-import { Proposal } from "../utils/interface";
+import { useData } from "@contexts/dataContext";
+import { Proposal } from "@utils/interface";
 import Arweave from "arweave";
 
 interface Props {
@@ -12,11 +12,7 @@ interface Props {
   proposal: Proposal | null;
 }
 
-export const VoteModal: React.FC<Props> = ({
-  isOpen,
-  closeModal,
-  proposal,
-}) => {
+export const VoteModal: React.FC<Props> = ({ isOpen, closeModal, proposal }) => {
   const { allVotes, vote } = useData();
   const [image, setImage] = useState<string>("");
   useEffect(() => {
@@ -39,11 +35,7 @@ export const VoteModal: React.FC<Props> = ({
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
-        <Dialog
-          as="div"
-          className="fixed inset-0 z-10 overflow-y-auto"
-          onClose={closeModal}
-        >
+        <Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={closeModal}>
           <div className="min-h-screen px-4 text-center">
             <Transition.Child
               as={Fragment}
@@ -58,10 +50,7 @@ export const VoteModal: React.FC<Props> = ({
             </Transition.Child>
 
             {/* This element is to trick the browser into centering the modal contents. */}
-            <span
-              className="inline-block h-screen align-middle"
-              aria-hidden="true"
-            >
+            <span className="inline-block h-screen align-middle" aria-hidden="true">
               &#8203;
             </span>
             <Transition.Child
@@ -75,10 +64,7 @@ export const VoteModal: React.FC<Props> = ({
             >
               <div className="inline-block w-full max-w-2xl p-6 my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl rounded-2xl border-4">
                 <div className="mt-2 flex flex-row justify-between">
-                  <Dialog.Title
-                    as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
-                  >
+                  <Dialog.Title as="h3" className="text-lg font-medium leading-6 text-gray-900">
                     {proposal?.title}
                   </Dialog.Title>
                   <span
@@ -91,31 +77,18 @@ export const VoteModal: React.FC<Props> = ({
                   </span>
                 </div>
                 <div className="my-5">
-                  <p className="text-sm text-gray-500 line-clamp-5">
-                    {proposal?.desc}
-                  </p>
+                  <p className="text-sm text-gray-500 line-clamp-5">{proposal?.desc}</p>
                 </div>
-                {image && (
-                  <Img
-                    src={`data:image/png;base64,${image}`}
-                    width={100}
-                    height={100}
-                  />
-                )}
+                {image && <Img src={`data:image/png;base64,${image}`} width={100} height={100} />}
                 <div className="my-5">
                   <p className="text-sm text-gray-500 line-clamp-5">
                     Funding Amount -{" "}
-                    <span className="font-bold text-black">
-                      {Web3.utils.fromWei(proposal?.amount ?? "0")} MATIC
-                    </span>
+                    <span className="font-bold text-black">{Web3.utils.fromWei(proposal?.amount ?? "0")} MATIC</span>
                   </p>
                 </div>
                 <div className="my-5">
                   <p className="text-sm text-gray-500 line-clamp-5">
-                    Proposer -{" "}
-                    <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">
-                      {proposal?.proposer}
-                    </span>
+                    Proposer - <span className="bg-gray-200 text-blue-500 00 p-1 rounded-lg">{proposal?.proposer}</span>
                   </p>
                 </div>
                 {!allVotes.includes(proposal?.id ?? "") ? (

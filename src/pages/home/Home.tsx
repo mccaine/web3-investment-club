@@ -6,7 +6,7 @@ import MainTemplate from "@templates/Main";
 import { CreateMember } from "@components/createMember";
 import { ProposalList } from "@components/proposalList";
 import { useData } from "@contexts/dataContext";
-import HeroSection from "pages/home/herosection";
+import HeroSection from "@pages/home/herosection";
 import Box from "@components/box";
 import Video from "@components/Video";
 import { Title } from "@components/typography";

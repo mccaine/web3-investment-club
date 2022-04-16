@@ -89,28 +89,32 @@ const SectionVideo = () => (
             max-width: 45%;
           }
         `}
-        // ml={8}
       >
-        <Title>
-          <Box
-            as="span"
-            mr={3}
-            sx={css`
-              font-weight: 500;
-              letter-spacing: -0.05rem;
-              display: inline-block;
-              margin-left: -6px;
-              padding: 0 0.96rem;
-              background-color: #f46c47;
-              transform: rotate(-5.5deg);
-            `}
-          >
-            Sheesh
-          </Box>
-          it...
-          <br />
-          you&apos;re the boss
-        </Title>
+        <Box
+          sx={css`
+            align-self: center;
+          `}
+        >
+          <Title as="h2">
+            <Box
+              as="span"
+              mr={3}
+              sx={css`
+                font-weight: 500;
+                letter-spacing: -0.05rem;
+                display: inline-block;
+                padding: 0 0.96rem;
+                background-color: #f46c47;
+                transform: rotate(-5.5deg);
+              `}
+            >
+              Sheesh
+            </Box>
+            it...
+            <br />
+            you&apos;re the boss
+          </Title>
+        </Box>
       </Box>
     </Box>
   </Section>

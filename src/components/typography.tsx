@@ -39,7 +39,7 @@ export const Title = styled.div<Props>`
   margin: 0;
   font-weight: 500;
   letter-spacing: -0.05rem;
-  text-align: center;
+  text-align: left;
   display: inline-block;
   ${({ sx }) => sx && sx};
 `;

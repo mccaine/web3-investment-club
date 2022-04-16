@@ -1,16 +1,15 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
+
+import MainTemplate from "@templates/Main";
+
 import { CreateMember } from "@components/createMember";
-import Navbar from "@components/navbar";
 import { ProposalList } from "@components/proposalList";
 import { useData } from "../contexts/dataContext";
-import ReactPlayer from "react-player/file";
-
 import HeroSection from "@components/herosection";
-import MainTemplate from "@templates/Main";
 import Box from "@components/box";
-import Button from "@components/button";
 import Video from "@components/Video";
+import { Title } from "@components/typography";
 
 export default function Home() {
   const { isMember, loading, account } = useData();
@@ -63,7 +62,7 @@ export default function Home() {
         />
       </Box>
       <Box ml={8}>
-        <Heading>
+        <Title>
           <Box
             as="span"
             mr={3}
@@ -77,12 +76,12 @@ export default function Home() {
               transform: rotate(-5.5deg);
             `}
           >
-            Scheesh
+            Sheesh
           </Box>
           it...
           <br />
           you&apos;re the boss
-        </Heading>
+        </Title>
       </Box>
     </Box>
   );

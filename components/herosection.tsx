@@ -1,15 +1,29 @@
-import styled from "styled-components";
-import Image from "next/image";
+import styled, { css } from "styled-components";
+
+import { Title, SubTitle } from "@components/typography";
+import { device } from "@theme/index";
+
+const titleBgCSS = css`
+  background: ${({ theme }) => theme.palette.color.greenPastel};
+  padding: 0 1.2rem;
+  @media ${device.md} {
+    padding: 0 1.6rem;
+  }
+`;
 
 const HeroSection = () => {
   return (
     <Section>
       <Inner>
         <Box>
-          <TitleWrapper>
-            <Title>Invest</Title>
+          <TitleWrapper as="h1">
+            <Title sx={titleBgCSS} as="span" size="large">
+              Invest
+            </Title>
             <br />
-            <Title>like a VC</Title>
+            <Title sx={titleBgCSS} as="span" size="large">
+              like a VC
+            </Title>
           </TitleWrapper>
           <SubTitleWrapper>
             <SubTitle>Stake, vote and invest with friends!</SubTitle>
@@ -17,7 +31,7 @@ const HeroSection = () => {
         </Box>
         <Box>
           <ImageOuter>
-            <Image src="/pic1.webp" alt="me" width="343" height="407" />
+            <Image src="/pic1.webp" alt="me" />
           </ImageOuter>
         </Box>
       </Inner>
@@ -27,45 +41,54 @@ const HeroSection = () => {
 
 const Section = styled.section`
   background-color: #fef7f6;
-  padding-left: 3.2rem;
-  padding-right: 3.2rem;
+  padding-left: 12px;
+  padding-right: 12px;
   display: block;
   width: 100%;
+  @media ${device.sm} {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  @media ${device.md} {
+    padding-left: 52px;
+    padding-right: 52px;
+  }
 `;
 
 const Inner = styled.div`
+  padding-top: 24px;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   width: 100%;
-  align-items: center;
   margin: 0 auto;
+  @media ${device.sm} {
+    flex-direction: row;
+    align-items: center;
+  }
 `;
 
 const Box = styled.div`
-  flex-basis: 50%;
+  flex-basis: 100%;
+  max-width: 100%;
   flex-grow: 0;
-  max-width: 50%;
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   margin: 0;
-  flex-direction: row;
+  flex-direction: column;
+  @media ${device.sm} {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
+  @media ${device.md} {
+    flex-basis: 50%;
+    max-width: 50%;
+  }
 `;
 
 const TitleWrapper = styled.div`
   text-align: left;
-`;
-
-const Title = styled.h1`
-  font-size: 5rem;
-  margin: 0;
-  font-weight: 500;
-  letter-spacing: -0.05rem;
-  text-align: center;
-  display: inline-block;
-  padding: 0 1.6rem;
-  background: #a6fa9f;
-  border: 0;
 `;
 
 const ImageOuter = styled.div`
@@ -80,8 +103,17 @@ const SubTitleWrapper = styled.div`
   margin-top: 24px;
 `;
 
-const SubTitle = styled.p`
-  font-size: 2rem;
+const Image = styled.img`
+  width: auto;
+  height: 200px;
+  @media ${device.sm} {
+    width: auto;
+    height: 326px;
+  }
+  @media ${device.md} {
+    width: auto;
+    height: 407px;
+  }
 `;
 
 export default HeroSection;

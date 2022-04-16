@@ -1,4 +1,5 @@
 import {DefaultTheme} from 'styled-components';
+import {color, ColorTypes} from '../color'
 
 type Background = {
     primary: string;
@@ -17,11 +18,20 @@ type Background = {
     type: 'DARK' | 'LIGHT';
     background: Background;
     text: Text;
+    color: ColorTypes;
   };
   
   type Mixins = {
     activeOpacity: number;
   };
+
+  type BreakPoints = {
+    xs: string;
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  }
 
   declare module 'styled-components' {
     export interface DefaultTheme {
@@ -29,6 +39,8 @@ type Background = {
       mixins: Mixins;
       spacing(params: number): number;
       hoverFix: string;
+      bp: BreakPoints;
+      bg: ColorTypes;
     }
   }
   
@@ -49,7 +61,9 @@ type Background = {
         disabled: 'rgba(0, 0, 0, 0.3)',
         link: '#0576fa',
       },
+      color: color,
     },
+    bg: color,
   };
   
   export default lightTheme;

@@ -19,6 +19,7 @@
       "@icons/*": ["icons/*"],
       "@components/*": ["components/*"],
       "@templates/*": ["templates/*"],
+      "@theme/*": ["theme/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

@@ -14,6 +14,8 @@ import TwitterIcon from "@icons/twitter.svg";
 import DiscordIcon from "@icons/discord.svg";
 import InstagramIcon from "@icons/instagram.svg";
 
+import Menu from "./Menu";
+
 interface Props {}
 
 const Footer: FC<Props> = () => {
@@ -25,30 +27,15 @@ const Footer: FC<Props> = () => {
     instagram: <InstagramIcon />,
   };
 
-  return (
-    <Section
-      as="footer"
-      sx={css`
-        background-color: ${({ theme }) => theme.palette.color.pinkGhost};
-        padding-top: ${({ theme }) => theme.spacing(10)}px;
-        padding-bottom: ${({ theme }) => theme.spacing(10)}px;
-        @media ${device.sm} {
-          padding-top: ${({ theme }) => theme.spacing(11)}px;
-          padding-bottom: ${({ theme }) => theme.spacing(11)}px;
-        }
-        @media ${device.md} {
-          padding-top: ${({ theme }) => theme.spacing(13)}px;
-          padding-bottom: ${({ theme }) => theme.spacing(13)}px;
-        }
-      `}
-    >
+  const FootNote = () => {
+    return (
       <Box
         sx={css`
           display: flex;
           width: 100%;
           flex-direction: column;
           justify-content: space-between;
-          align-items: center;
+          align-items: flex-start;
           @media ${device.sm} {
             flex-direction: row;
             justify-content: space-between;
@@ -72,28 +59,48 @@ const Footer: FC<Props> = () => {
           <Caption>All rights reserved. ® 2022 Sheesh VC</Caption>
         </Box>
       </Box>
+    );
+  };
+
+  return (
+    <Section
+      as="footer"
+      sx={css`
+        background-color: ${({ theme }) => theme.palette.color.pinkGhost};
+        padding-top: ${({ theme }) => theme.spacing(10)}px;
+        padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+        @media ${device.sm} {
+          padding-top: ${({ theme }) => theme.spacing(11)}px;
+          padding-bottom: ${({ theme }) => theme.spacing(11)}px;
+        }
+        @media ${device.md} {
+          padding-top: ${({ theme }) => theme.spacing(13)}px;
+          padding-bottom: ${({ theme }) => theme.spacing(13)}px;
+        }
+      `}
+    >
+      <Menu />
+      <FootNote />
     </Section>
   );
 };
 
 const SomeLinksWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
   padding-bottom: ${({ theme }) => theme.spacing(3)}px;
-  margin-right: 0;
+  padding-top: ${({ theme }) => theme.spacing(3)}px;
+  margin-left: ${({ theme }) => theme.spacing(-2)}px;
   @media ${device.sm} {
     padding-top: 0;
-    margin-right: ${({ theme }) => theme.spacing(-2)}px;
+    padding-bottom: 0;
+    margin-left: ${({ theme }) => theme.spacing(-2)}px;
+    margin-right: 0;
   }
 `;
 
 const SoMeIconWrapper = styled.div`
-  width: 24px;
-  height: 24px;
-  @media ${device.sm} {
-    width: 24px;
-    height: 24px;
-  }
+  width: 26px;
+  height: 26px;
 `;
 
 export default Footer;

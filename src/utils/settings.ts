@@ -35,6 +35,13 @@ type SoMeObj = {
     active: boolean;
 }
 
+type FooterMenu = {
+    id: string;
+    url: string;
+    title: string;
+    active: boolean;
+}
+
 export const settings: Settings = {
     dAppName: "Sheesh",
     title: "Sheesh Venture Club",
@@ -93,4 +100,13 @@ export const some: SoMeObj[] = [
         handle: "",
         active: true
     },
+]
+
+export const footer_menu: FooterMenu[] = [
+    {
+        id: "community-docs",
+        url: "https://docs.sheesh.vc",
+        title: "Docs",
+        active: true
+    }
 ]

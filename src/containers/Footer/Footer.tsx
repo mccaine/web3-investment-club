@@ -36,10 +36,12 @@ const Footer: FC<Props> = () => {
           flex-direction: column;
           justify-content: space-between;
           align-items: flex-start;
+          padding-top: 0;
           @media ${device.sm} {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
+            padding-top: ${({ theme }) => theme.spacing(5)}px;
           }
         `}
       >

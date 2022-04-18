@@ -1,10 +1,11 @@
-import { FC } from "react";
+import { FC, useCallback } from "react";
 import styled, { css } from "styled-components";
 
 import { device } from "@theme/index";
 import { Section } from "@components/layout";
 import { Title } from "@components/typography";
 import Box from "@components/box";
+import ButtonBase from "@components/buttonBase";
 
 import TikTokRound from "@icons/tiktok_round.svg";
 import TwitterRound from "@icons/twitter_round.svg";
@@ -14,6 +15,10 @@ import InstagramRound from "@icons/instagram_round.svg";
 import { some } from "@utils/settings";
 
 const SectionSocial: FC = () => {
+  const handleOnSocial = useCallback((item) => {
+    location.href = item.url;
+  }, []);
+
   const someIcon = {
     tiktok: <TikTokRound />,
     twitter: <TwitterRound />,
@@ -46,7 +51,11 @@ const SectionSocial: FC = () => {
         <SomeLinksWrapper>
           {some.map((el) => {
             if (el.active) {
-              return <SoMeIconWrapper>{someIcon[el.id]}</SoMeIconWrapper>;
+              return (
+                <ButtonBase my={1.5} mx={1.5} key={el.id} href={el.url} target="_blank">
+                  <SoMeIconWrapper>{someIcon[el.id]}</SoMeIconWrapper>
+                </ButtonBase>
+              );
             }
           })}
         </SomeLinksWrapper>
@@ -62,7 +71,7 @@ const Inner = styled.div`
   align-items: center;
   width: 100%;
   padding-top: ${({ theme }) => theme.spacing(8)}px;
-  padding-bottom: ${({ theme }) => theme.spacing(8)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(6)}px;
   @media ${device.sm} {
     flex-direction: row;
     justify-content: space-between;
@@ -73,7 +82,7 @@ const Inner = styled.div`
 const SomeLinksWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding-top: ${({ theme }) => theme.spacing(4)}px;
+  padding-top: ${({ theme }) => theme.spacing(3)}px;
   margin-right: 0;
   @media ${device.sm} {
     padding-top: 0;
@@ -82,15 +91,9 @@ const SomeLinksWrapper = styled.div`
 `;
 
 const SoMeIconWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: ${({ theme }) => theme.spacing(2)}px;
-  margin-right: ${({ theme }) => theme.spacing(2)}px;
   width: 44px;
   height: 44px;
   @media ${device.sm} {
-    padding-top: ${({ theme }) => theme.spacing(8)}px;
     width: 64px;
     height: 64px;
   }

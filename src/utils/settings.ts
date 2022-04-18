@@ -68,14 +68,14 @@ export const some: SoMeObj[] = [
     {
         id: "discord",
         name: "Discord",
-        url: "",
+        url: "https://discord.com",
         handle: "",
         active: true
     },
     {
         id: "twitter",
         name: "Twitter",
-        url: "",
+        url: "https://twitter.com",
         handle: "",
         active: true
     },
@@ -83,13 +83,13 @@ export const some: SoMeObj[] = [
         id: "instagram",
         name: "Instagram",
         url: "",
-        handle: "",
+        handle: "https://instagram.com",
         active: true
     },
     {
         id: "tiktok",
         name: "TikTok",
-        url: "",
+        url: "https://tiktok.com",
         handle: "",
         active: true
     },

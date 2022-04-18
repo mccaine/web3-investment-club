@@ -75,7 +75,7 @@ export const some: SoMeObj[] = [
     {
         id: "discord",
         name: "Discord",
-        url: "https://discord.com",
+        url: "https://discord.gg/pTDpk8Vpcb",
         handle: "",
         active: true
     },

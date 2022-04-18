@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styled from "styled-components";
 
-import SheeshIcon from "@icons/sheesh_xl.svg";
+import SheeshIcon from "@icons/sheesh_text.svg";
 
 const Sheesh = () => {
   return (

@@ -8,14 +8,14 @@ interface Props {
   description?: string;
 }
 
-const Head: React.FC<Props> = ({ title = settings.dAppName, description = settings.description }) => {
+const Head: React.FC<Props> = ({ title, description }) => {
   return (
     <NextHead>
       <meta name="theme-color" content="#222" />
       <link rel="icon" href="/favicon.ico" />
-      <title>{`${title} | ${description}`}</title>
+      <title>{title || settings.title}</title>
       <meta name="keywords" content={metaTags.keywords} />
-      <meta name="description" content={description} />
+      <meta name="description" content={description || settings.description} />
       <meta name="image" content={metaTags.image} />
       <meta name="og:site_name" content={og.site_name} />
       <meta name="og:locale" content={og.locale} />

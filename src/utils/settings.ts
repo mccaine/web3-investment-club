@@ -28,7 +28,7 @@ interface OpenGraph {
 }
 
 type SoMeObj = {
-    id: "tiktok" | "twitter" | "facebook" | "discord" | "instagram";
+    id: "tiktok" | "twitter" | "discord" | "instagram";
     name: string;
     url: string;
     handle?: string;

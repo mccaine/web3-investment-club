@@ -11,6 +11,7 @@ import SectionHero from "./SectionHero";
 import SectionVideo from "./SectionVideo";
 import SectionMembership from "./SectionMembership";
 import SectionSocial from "./SectionSocial";
+import SectionSheeshIcon from "@components/sheesh";
 
 export default function Home() {
   const { isMember, loading, account } = useData();
@@ -22,6 +23,7 @@ export default function Home() {
       <SectionMembership isMember={isMember} />
       {/* {isMember && <ProposalList />} */}
       <SectionSocial />
+      <SectionSheeshIcon />
     </MainTemplate>
   );
 }

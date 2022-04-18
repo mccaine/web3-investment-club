@@ -78,3 +78,8 @@ export const SubTitle = styled.div<Props>`
   display: inline-block;
   ${({ sx }) => sx && sx};
 `;
+
+export const Caption = styled.span`
+  color: ${({ theme }) => theme.palette.text.secondary};
+  font-size: 14px;
+`;

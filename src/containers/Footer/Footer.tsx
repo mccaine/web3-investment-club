@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 
 import { device } from "@theme/index";
 import { Section } from "@components/layout";
+import { Caption } from "@components/typography";
 
 interface Props {}
 
@@ -24,7 +25,7 @@ const Footer: FC<Props> = () => {
         }
       `}
     >
-      FOOTER
+      <Caption>All rights reserved. ® 2022 Sheesh VC</Caption>
     </Section>
   );
 };

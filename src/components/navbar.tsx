@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import styled, { css } from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
@@ -49,43 +49,60 @@ function Navbar() {
 
   return (
     <>
-      <Box
-        as="nav"
-        px={4}
-        py={1}
-        sx={css`
-          max-width: 1600px;
-          min-height: 64px;
-          display: flex;
-          width: 100%;
-          align-items: center;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        `}
-      >
+      <Container>
         <Box
+          as="nav"
+          px={4}
+          py={1}
           sx={css`
+            max-width: 1600px;
+            min-height: 64px;
             display: flex;
-            justify-content: space-between;
             width: 100%;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background-color: #fff;
           `}
         >
-          <div className="flex flex-row">
-            <Link href="/" passHref>
-              <Logo />
-            </Link>
-          </div>
+          <Box
+            sx={css`
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+            `}
+          >
+            <div className="flex flex-row">
+              <Link href="/" passHref>
+                <Logo />
+              </Link>
+            </div>
 
-          {account ? (
-            <Button onClick={() => {}} title={account.substr(0, 10)} />
-          ) : (
-            <Button onClick={handleConnect} title={loading ? "loading..." : "connect"} />
-          )}
+            {account ? (
+              <Button onClick={() => {}} title={account.substr(0, 10)} />
+            ) : (
+              <Button onClick={handleConnect} title={loading ? "loading..." : "connect"} />
+            )}
+          </Box>
         </Box>
-      </Box>
-      {isMember && <TabNav />}
+        {isMember && <TabNav />}
+      </Container>
+      <Spacing />
     </>
   );
 }
+
+const Container = styled.header`
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+`;
+
+const Spacing = styled.div`
+  width: 100%;
+  height: 64px;
+`;
 
 export default Navbar;
 

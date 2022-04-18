@@ -91,8 +91,8 @@ const SomeLinksWrapper = styled.div`
 `;
 
 const SoMeIconWrapper = styled.div`
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   @media ${device.sm} {
     width: 64px;
     height: 64px;

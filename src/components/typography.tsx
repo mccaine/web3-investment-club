@@ -45,23 +45,23 @@ export const Title = styled.div<Props>`
 `;
 
 const subTitleSmall = css`
-  font-size: 18px;
+  font-size: 14px;
   @media ${device.md} {
-    font-size: 24px;
+    font-size: 16px;
   }
 `;
 
 const subTitleMedium = css`
-  font-size: 24px;
+  font-size: 18px;
   @media ${device.md} {
-    font-size: 32px;
+    font-size: 22px;
   }
 `;
 
 const subTitleLarge = css`
-  font-size: 32px;
+  font-size: 20px;
   @media ${device.md} {
-    font-size: 44px;
+    font-size: 22px;
   }
 `;
 

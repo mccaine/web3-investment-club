@@ -60,8 +60,9 @@ function Navbar() {
             display: flex;
             width: 100%;
             align-items: center;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
             background-color: #fff;
+            margin: 0 auto;
           `}
         >
           <Box
@@ -86,7 +87,7 @@ function Navbar() {
         </Box>
         {isMember && <TabNav />}
       </Container>
-      <Spacing />
+      <Spacing isMember={isMember} />
     </>
   );
 }
@@ -94,15 +95,18 @@ function Navbar() {
 const Container = styled.header`
   display: flex;
   position: fixed;
+  flex-direction: column;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `;
 
-const Spacing = styled.div`
+const Spacing = styled.div<{ isMember: boolean }>`
   width: 100%;
-  height: 64px;
+  height: ${({ isMember }) => (isMember ? 128 : 64)}px;
 `;
 
 export default Navbar;

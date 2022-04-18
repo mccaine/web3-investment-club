@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC } from "react";
 import styled, { css } from "styled-components";
 
 import { device } from "@theme/index";
@@ -7,24 +7,20 @@ import { Title } from "@components/typography";
 import Box from "@components/box";
 import ButtonBase from "@components/buttonBase";
 
-import TikTokRound from "@icons/tiktok_round.svg";
-import TwitterRound from "@icons/twitter_round.svg";
-import DiscordRound from "@icons/discord_round.svg";
-import InstagramRound from "@icons/instagram_round.svg";
+import TikTokIcon from "@icons/tiktok_round.svg";
+import TwitterIcon from "@icons/twitter_round.svg";
+import DiscordIcon from "@icons/discord_round.svg";
+import InstagramIcon from "@icons/instagram_round.svg";
 
 import { some } from "@utils/settings";
 
 const SectionSocial: FC = () => {
-  const handleOnSocial = useCallback((item) => {
-    location.href = item.url;
-  }, []);
-
   const someIcon = {
-    tiktok: <TikTokRound />,
-    twitter: <TwitterRound />,
-    facebook: <TikTokRound />,
-    discord: <DiscordRound />,
-    instagram: <InstagramRound />,
+    tiktok: <TikTokIcon />,
+    twitter: <TwitterIcon />,
+    facebook: <TikTokIcon />,
+    discord: <DiscordIcon />,
+    instagram: <InstagramIcon />,
   };
 
   return (

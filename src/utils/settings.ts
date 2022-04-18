@@ -82,8 +82,8 @@ export const some: SoMeObj[] = [
     {
         id: "twitter",
         name: "Twitter",
-        url: "https://twitter.com",
-        handle: "",
+        url: "https://twitter.com/Sheesh_VC",
+        handle: "@Sheesh_VC",
         active: true
     },
     {
@@ -96,8 +96,8 @@ export const some: SoMeObj[] = [
     {
         id: "tiktok",
         name: "TikTok",
-        url: "https://tiktok.com",
-        handle: "",
+        url: "https://www.tiktok.com/@sheesh_vc",
+        handle: "@sheesh_vc",
         active: true
     },
 ]

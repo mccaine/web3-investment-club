@@ -12,6 +12,7 @@ interface MetaTags {
     locale: string;
     image: string;
     description: string;
+    keywords: string;
     canonicalURL: string;
     alternateURLs: string[];
 }
@@ -48,6 +49,7 @@ export const metaTags: MetaTags = {
     locale: "en_US",
     image: "",
     description: settings.description,
+    keywords: "venture club, startup funding, venture capital, accelerator",
     canonicalURL: settings.canonicalURL,
     alternateURLs: ["https://shesh.vs", "https://sheeesh.vs"],
 }

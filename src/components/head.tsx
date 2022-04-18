@@ -1,7 +1,7 @@
 import React from "react";
 import NextHead from "next/head";
 
-import { settings } from "@utils/settings";
+import { settings, metaTags, og } from "@utils/settings";
 
 interface Props {
   title?: string;
@@ -11,9 +11,19 @@ interface Props {
 const Head: React.FC<Props> = ({ title = settings.dAppName, description = settings.description }) => {
   return (
     <NextHead>
-      <title>{`${title} | ${description}`}</title>
-      <meta name="description" content={description} />
+      <meta name="theme-color" content="#222" />
       <link rel="icon" href="/favicon.ico" />
+      <title>{`${title} | ${description}`}</title>
+      <meta name="keywords" content={metaTags.keywords} />
+      <meta name="description" content={description} />
+      <meta name="image" content={metaTags.image} />
+      <meta name="og:site_name" content={og.site_name} />
+      <meta name="og:locale" content={og.locale} />
+      <meta name="og:url" content={og.url} />
+      <meta name="og:type" content={og.type} />
+      <meta name="og:title" content={og.title} />
+      <meta name="og:description" content={og.description} />
+      <meta name="og:image" content={og.image} />
     </NextHead>
   );
 };

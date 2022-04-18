@@ -87,8 +87,12 @@ const SoMeIconWrapper = styled.div`
   align-items: center;
   margin-left: ${({ theme }) => theme.spacing(2)}px;
   margin-right: ${({ theme }) => theme.spacing(2)}px;
+  width: 44px;
+  height: 44px;
   @media ${device.sm} {
     padding-top: ${({ theme }) => theme.spacing(8)}px;
+    width: 64px;
+    height: 64px;
   }
 `;
 

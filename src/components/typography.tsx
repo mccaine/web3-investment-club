@@ -52,7 +52,7 @@ const subTitleSmall = css`
 `;
 
 const subTitleMedium = css`
-  font-size: 18px;
+  font-size: 19px;
   @media ${device.md} {
     font-size: 22px;
   }

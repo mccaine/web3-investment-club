@@ -26,7 +26,7 @@ const SectionHero = () => {
             </Title>
           </TitleWrapper>
           <SubTitleWrapper>
-            <SubTitle size="medium">
+            <SubTitle as="p" size="medium">
               Sheesh is a Venture Club that gives you access to the VC game: Vote on promising startups, get an early
               stake in the business and be rewarded when promoting your favourites.
             </SubTitle>

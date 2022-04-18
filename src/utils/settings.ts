@@ -1,21 +1,94 @@
 interface Settings {
     dAppName: string;
     tagline: string;
+    title: string;
     description: string;
     canonicalURL: string;
-    alternateURLs: string[];
     proposeStake: string;
 }
 
-interface OpenGraph {}
+interface MetaTags {
+    title: string;
+    locale: string;
+    image: string;
+    description: string;
+    canonicalURL: string;
+    alternateURLs: string[];
+}
+
+interface OpenGraph {
+    site_name: string;
+    title: string;
+    type: "website";
+    locale: string;
+    description: string;
+    image: string;
+    url: string;
+}
+
+type SoMeObj = {
+    id: "tiktok" | "twitter" | "facebook" | "discord" | "instagram";
+    name: string;
+    url: string;
+    handle?: string;
+    active: boolean;
+}
 
 export const settings: Settings = {
-    dAppName: "SheesH",
+    dAppName: "Sheesh",
+    title: "Sheesh Venture Club",
     tagline: "Be you own VC",
-    description: "SheesH Venture Club",
+    description: "Sheesh is a Venture Club that gives you access to the VC game: Vote on promising startups, get an early stake in the business and be rewarded when promoting your favourites.",
     canonicalURL: "https://sheesh.vc",
-    alternateURLs: ["https://shesh.vs", "https://sheeesh.vs", "https://jeez.vs"],
     proposeStake: "0.05",
 }
 
-export const og: OpenGraph = {}
+export const metaTags: MetaTags = {
+    title: settings.title,
+    locale: "en_US",
+    image: "",
+    description: settings.description,
+    canonicalURL: settings.canonicalURL,
+    alternateURLs: ["https://shesh.vs", "https://sheeesh.vs"],
+}
+
+export const og: OpenGraph = {
+    site_name: settings.dAppName,
+    title: settings.title,
+    type: "website",
+    locale: metaTags.locale,
+    description: settings.description,
+    image: metaTags.image,
+    url: settings.canonicalURL,
+}
+
+export const some: SoMeObj[] = [
+    {
+        id: "discord",
+        name: "Discord",
+        url: "",
+        handle: "",
+        active: true
+    },
+    {
+        id: "twitter",
+        name: "Twitter",
+        url: "",
+        handle: "",
+        active: false
+    },
+    {
+        id: "instagram",
+        name: "Instagram",
+        url: "",
+        handle: "",
+        active: false
+    },
+    {
+        id: "tiktok",
+        name: "TikTok",
+        url: "",
+        handle: "",
+        active: false
+    },
+]

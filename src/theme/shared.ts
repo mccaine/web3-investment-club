@@ -44,6 +44,7 @@ const sharedStyles = {
     activeOpacity: 0.72,
     maxNavWidth: "1600px",
     maxPageWidth: "1600px",
+    maxPageWidthNarrow: "1000px",
   },
   hoverFix: '@media (hover: hover)',
   bp: {

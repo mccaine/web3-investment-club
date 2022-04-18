@@ -81,11 +81,18 @@ const Footer: FC<Props> = () => {
         }
       `}
     >
-      <Menu />
-      <FootNote />
+      <Inner>
+        <Menu />
+        <FootNote />
+      </Inner>
     </Section>
   );
 };
+
+const Inner = styled.div`
+  margin: 0 auto;
+  max-width: ${({ theme }) => theme.mixins.maxPageWidthNarrow};
+`;
 
 const SomeLinksWrapper = styled.div`
   display: flex;

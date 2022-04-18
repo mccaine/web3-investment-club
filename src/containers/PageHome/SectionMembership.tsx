@@ -26,9 +26,16 @@ const SectionMembership: FC<Props> = ({ isMember }) => {
         }
       `}
     >
-      <MembershipCreate />
+      <Inner>
+        <MembershipCreate />
+      </Inner>
     </Section>
   );
 };
+
+const Inner = styled.div`
+  margin: 0 auto;
+  max-width: ${({ theme }) => theme.mixins.maxPageWidthNarrow};
+`;
 
 export default SectionMembership;

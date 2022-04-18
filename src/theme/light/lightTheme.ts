@@ -25,6 +25,7 @@ type Background = {
     activeOpacity: number;
     maxNavWidth: string;
     maxPageWidth: string;
+    maxPageWidthNarrow: string;
   };
 
   type BreakPoints = {

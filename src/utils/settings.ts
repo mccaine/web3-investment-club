@@ -77,20 +77,20 @@ export const some: SoMeObj[] = [
         name: "Twitter",
         url: "",
         handle: "",
-        active: false
+        active: true
     },
     {
         id: "instagram",
         name: "Instagram",
         url: "",
         handle: "",
-        active: false
+        active: true
     },
     {
         id: "tiktok",
         name: "TikTok",
         url: "",
         handle: "",
-        active: false
+        active: true
     },
 ]

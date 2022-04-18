@@ -13,11 +13,11 @@ const Footer: FC<Props> = () => {
       as="footer"
       sx={css`
         background-color: ${({ theme }) => theme.palette.color.pinkGhost};
-        padding-top: ${({ theme }) => theme.spacing(6)}px;
-        padding-bottom: ${({ theme }) => theme.spacing(6)}px;
+        padding-top: ${({ theme }) => theme.spacing(10)}px;
+        padding-bottom: ${({ theme }) => theme.spacing(10)}px;
         @media ${device.sm} {
-          padding-top: ${({ theme }) => theme.spacing(10)}px;
-          padding-bottom: ${({ theme }) => theme.spacing(10)}px;
+          padding-top: ${({ theme }) => theme.spacing(11)}px;
+          padding-bottom: ${({ theme }) => theme.spacing(11)}px;
         }
         @media ${device.md} {
           padding-top: ${({ theme }) => theme.spacing(13)}px;

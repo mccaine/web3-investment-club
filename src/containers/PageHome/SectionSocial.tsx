@@ -52,7 +52,7 @@ const SectionSocial: FC = () => {
           {some.map((el) => {
             if (el.active) {
               return (
-                <ButtonBase my={1.5} mx={1.5} key={el.id} href={el.url} target="_blank">
+                <ButtonBase key={el.id} my={1.5} mx={1.5} href={el.url} target="_blank">
                   <SoMeIconWrapper>{someIcon[el.id]}</SoMeIconWrapper>
                 </ButtonBase>
               );

@@ -9,9 +9,10 @@ interface Props {
   onClick?: (params?: Item) => Item | void;
   item?: Item;
   href?: string;
+  target?: "_blank" | "_self" | "_parent" | "_top";
 }
 
-const ButtonBase: FC<Props & Margin & Padding> = ({ children, onClick, item, href, ...rest }) => {
+const ButtonBase: FC<Props & Margin & Padding> = ({ children, onClick, item, href, target, ...rest }) => {
   const handleOnClick = useCallback(() => {
     if (onClick) {
       onClick(item);
@@ -20,7 +21,7 @@ const ButtonBase: FC<Props & Margin & Padding> = ({ children, onClick, item, hre
 
   if (href) {
     return (
-      <ABase href={href} onClick={handleOnClick} {...rest}>
+      <ABase href={href} target={target} {...rest}>
         {children}
       </ABase>
     );

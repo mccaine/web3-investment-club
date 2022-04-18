@@ -87,7 +87,7 @@ const Footer: FC<Props> = () => {
 
 const SomeLinksWrapper = styled.div`
   display: flex;
-  padding-bottom: ${({ theme }) => theme.spacing(3)}px;
+  padding-bottom: ${({ theme }) => theme.spacing(9)}px;
   padding-top: ${({ theme }) => theme.spacing(3)}px;
   margin-left: ${({ theme }) => theme.spacing(-2)}px;
   @media ${device.sm} {

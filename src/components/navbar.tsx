@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+import { connect } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useCallback } from "react";
@@ -8,13 +9,21 @@ import Logo from "@components/logo";
 import Button from "@components/button";
 import Box from "@components/box";
 
-function Navbar() {
-  const router = useRouter();
-  const { account, connect, isMember, isStakeholder, loading } = useData();
+import { userSignInRequestAction } from "@containers/user/actions";
 
-  const handleConnect = useCallback(async () => {
-    await connect();
-  }, [connect]);
+interface Props {
+  account: string;
+  loading: boolean;
+  userSignIn(): void;
+}
+
+const Navbar: React.FC<Props> = ({ account, loading, userSignIn }) => {
+  const router = useRouter();
+  const { isMember, isStakeholder } = useData();
+
+  const handleConnect = useCallback(() => {
+    userSignIn();
+  }, [userSignIn]);
 
   const TabNav = () => {
     return (
@@ -90,7 +99,7 @@ function Navbar() {
       <Spacing isMember={isMember} />
     </>
   );
-}
+};
 
 const Container = styled.header`
   display: flex;
@@ -109,7 +118,16 @@ const Spacing = styled.div<{ isMember: boolean }>`
   height: ${({ isMember }) => (isMember ? 128 : 64)}px;
 `;
 
-export default Navbar;
+const mapStateToProps = (state: any) => ({
+  account: state.user.account,
+  loading: state.user.loading,
+});
+
+const actions = (dispatch: any) => ({
+  userSignIn: () => dispatch(userSignInRequestAction()),
+});
+
+export default connect(mapStateToProps, actions)(Navbar);
 
 const TabButton = ({ title, isActive, url }: { title: string; isActive: boolean; url: string }) => {
   return (

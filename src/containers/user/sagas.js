@@ -1,26 +1,19 @@
 import { takeLatest, put, all, call } from "redux-saga/effects";
-
-// import { hcn } from "services/hcn";
+import Web3 from "web3";
 
 import Router from "next/router";
 
 import { USER_SIGNIN_REQUEST } from "./constants";
-// import { userSignInFailureAction, userSignInSuccessAction } from "./actions";
+import { userSignInFailureAction, userSignInSuccessAction } from "./actions";
 
-export function* userSignin(action) {
-  // const { rethrow } = action.settings;
+export function* userSignin() {
   try {
-    // const authUser = yield call(hcn.goGetAuthUser);
-    // const { user } = yield call(hcn.doLoginUser, authUser.uid);
-    // yield put(userSignInSuccessAction(user));
-    // return user;
+    const web3 = new Web3(Web3.givenProvider || "http://localhost:7545");
+    const accounts = yield call(web3.eth.requestAccounts);
+    yield put(userSignInSuccessAction(accounts[0]));
+    return accounts[0];
   } catch (err) {
-    //   if (err.message) {
-    //     yield put(userSignInFailureAction(err.message));
-    //   }
-    //   if (rethrow) {
-    //     throw err;
-    //   }
+    yield put(userSignInFailureAction(err.message));
   }
 }
 

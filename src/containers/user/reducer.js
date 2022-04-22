@@ -1,7 +1,7 @@
 import * as c from "./constants";
 
 const initialState = {
-  data: null,
+  account: "",
   loading: false,
   updatedAt: 0,
 };
@@ -17,7 +17,7 @@ const userReducer = (state = initialState, action) => {
     case c.USER_SIGNIN_SUCCESS:
       return {
         ...state,
-        data: payload.user,
+        account: payload.account,
         loading: false,
         updatedAt: Date.now(),
       };

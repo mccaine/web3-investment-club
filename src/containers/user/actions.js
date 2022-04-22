@@ -7,9 +7,9 @@ export const userSignInRequestAction = () => ({
   error: false,
 });
 
-export const userSignInSuccessAction = (user) => ({
+export const userSignInSuccessAction = (account) => ({
   type: c.USER_SIGNIN_SUCCESS,
-  payload: { user },
+  payload: { account },
   error: false,
 });
 

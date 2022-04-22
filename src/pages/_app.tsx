@@ -1,11 +1,13 @@
 import "../styles/globals.css";
 import "tailwindcss/tailwind.css";
+import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
 import { DataProvider } from "@contexts/dataContext";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
 import { lightTheme } from "@theme/index";
+import { store } from "../store";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -17,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <>
+    <Provider store={store}>
       <ThemeProvider theme={lightTheme}>
         {/* <GlobalStyle /> */}
         <ToastContainer
@@ -37,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Component {...pageProps} />
         </DataProvider>
       </ThemeProvider>
-    </>
+    </Provider>
   );
 }
 

@@ -1,0 +1,5 @@
+export const APP_RESET_STATE = "APP_RESET_STATE";
+
+export const APP_INIT_REQUEST = "APP_INIT_REQUEST";
+export const APP_INIT_SUCCESS = "APP_INIT_SUCCESS";
+export const APP_INIT_FAILURE = "APP_INIT_FAILURE";
